@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+    ============================================
+    4TREE Agricultural Innovation Website
+    ============================================
+    
+    Based on: Start Bootstrap - Grayscale v7.0.6
+    Original Source: https://github.com/StartBootstrap/startbootstrap-grayscale
+    Original Copyright: (c) 2013-2023 Start Bootstrap LLC
+    Original License: MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
+    
+    Modified by: 4TREE/A4S Team
+    Modified Year: 2025
+    Current Version: 1.0.0
+    
+    This project is licensed under the MIT License.
+    ============================================
+    -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="4TREE - Revolutionary Plant Enhancement Innovation with Ion Technology 5x More Powerful Than Nano">
+    <meta name="keywords" content="4TREE, plant supplement, agriculture innovation, organic farming, sustainable agriculture">
+    <title>4TREE - Premium Agricultural Innovation</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - เพิ่ม Bebas Neue สำหรับ Logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700,800,900&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gold: linear-gradient(135deg, #FFD700, #FFA500);
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --shadow-hard: 0 20px 60px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 0 50px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ===== Global Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="a" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23a)"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ===== Premium Navigation ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo ที่แก้ไข Font ให้เลข 4 สวย */
+        .logo {
+            font-family: 'Montserrat', sans-serif; /* เปลี่ยนเป็น Montserrat สำหรับตัวเลขที่สวย */
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .logo-number {
+            font-family: 'Bebas Neue', sans-serif; /* Font พิเศษสำหรับเลข 4 */
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            background: var(--accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Hero Title ที่ใช้ Font แบบเดียวกับ Logo */
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+            letter-spacing: 2px;
+        }
+
+        .hero-title .number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* ===== Product Section ===== */
+        .product-section {
+            padding: 100px 20px;
+            background: white;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        /* ===== Premium Cards ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .premium-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            list-style: none;
+        }
+
+        .card-features li {
+            padding: 10px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-features li i {
+            color: #4facfe;
+        }
+
+        /* ===== Benefits Section ===== */
+        .benefits-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            top: 0;
+            left: 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .benefit-text {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact-section {
+            padding: 100px 20px;
+            background: white;
+            position: relative;
+        }
+
+        .contact-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .contact-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .contact-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .phone-number {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+            letter-spacing: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .phone-number:hover {
+            transform: scale(1.1);
+        }
+
+        .call-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 60px;
+            margin-top: 20px;
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .call-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .call-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(79, 172, 254, 0.4);
+        }
+
+        .call-button:hover::before {
+            left: 100%;
+        }
+
+        .call-button i {
+            margin-right: 10px;
+            animation: ring 2s ease-in-out infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(-25deg); }
+            20%, 40% { transform: rotate(25deg); }
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1e);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* Credit Section - สำคัญต้องมี */
+        .footer-credits {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-credits p {
+            opacity: 0.5;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+
+        .footer-credits a {
+            color: #4facfe;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-credits a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                padding: 30px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 40px 20px;
+            }
+
+            .phone-number {
+                font-size: 2rem;
+            }
+
+            .call-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== Loading Animation ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Custom Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-leaf"></i>
+                <span class="logo-number">4</span>TREE
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#benefits" class="nav-link">Benefits</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">
+                <i class="fas fa-seedling"></i> <span class="number">4</span>TREE
+            </h1>
+            <p class="hero-subtitle">
+                Revolutionary Plant Enhancement Technology<br>
+                Ion Power 5x More Effective Than Nano
+            </p>
+            <a href="#products" class="cta-button">
+                <i class="fas fa-rocket"></i> Discover Innovation
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="product-section" id="products">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Premium Product Line</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Advanced Agricultural Solutions for Sustainable Farming
+            </p>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="premium-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="card-title">4TREE Original</h3>
+                    <p class="card-description">
+                        Premium plant enhancement supplement with revolutionary ion technology. 
+                        Penetrates leaves and stems in less than 60 seconds.
+                    </p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check-circle"></i> Increases starch and sugar</li>
+                        <li><i class="fas fa-check-circle"></i> Stimulates flowering</li>
+                        <li><i class="fas fa-check-circle"></i> Prevents fruit drop</li>
+                        <li><i class="fas fa-check-circle"></i> Maximizes fruit size</li>
+                    </ul>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="premium-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="card-title">Amino Black</h3>
+                    <p class="card-description">
+                        Specialized microbial nutrients designed for starch-producing plants. 
+                        Perfect for rubber trees and cassava cultivation.
+                    </p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check-circle"></i> Prevents leaf diseases</li>
+                        <li><i class="fas fa-check-circle"></i> Improves latex quality</li>
+                        <li><i class="fas fa-check-circle"></i> Increases starch content</li>
+                        <li><i class="fas fa-check-circle"></i> Boosts yield by 30-40%</li>
+                    </ul>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="premium-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="card-title">4SOIL Plus</h3>
+                    <p class="card-description">
+                        Innovative organic mineral complex featuring Zeolite, Pumice, and Perlite. 
+                        Restores and rejuvenates depleted soils.
+                    </p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check-circle"></i> Balances soil pH</li>
+                        <li><i class="fas fa-check-circle"></i> Removes chemical residues</li>
+                        <li><i class="fas fa-check-circle"></i> Enhances nutrient retention</li>
+                        <li><i class="fas fa-check-circle"></i> Improves soil structure</li>
+                    </ul>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="premium-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Booster</h3>
+                    <p class="card-description">
+                        Next-generation chitosan extract with ion-sized particles. 
+                        Rapid absorption within 60 seconds for immediate results.
+                    </p>
+                    <ul class="card-features">
+                        <li><i class="fas fa-check-circle"></i> Promotes flower initiation</li>
+                        <li><i class="fas fa-check-circle"></i> Strengthens fruit stems</li>
+                        <li><i class="fas fa-check-circle"></i> Prevents fungal infections</li>
+                        <li><i class="fas fa-check-circle"></i> Enhances plant immunity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefits">
+        <div class="container">
+            <h2 class="section-title" style="color: white;" data-aos="fade-up">Why Choose 4TREE?</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);" data-aos="fade-up" data-aos-delay="100">
+                Industry-Leading Agricultural Innovation
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="benefit-title">Ultra-Fast Absorption</h3>
+                    <p class="benefit-text">Penetrates plant tissues in less than 60 seconds</p>
+                </div>
+
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="benefit-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="benefit-title">Ion Technology</h3>
+                    <p class="benefit-text">5x more powerful than nano particles</p>
+                </div>
+
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Plant Protection</h3>
+                    <p class="benefit-text">Natural defense against pests and diseases</p>
+                </div>
+
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="benefit-title">100% Organic</h3>
+                    <p class="benefit-text">Safe for users and environment</p>
+                </div>
+
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Proven Results</h3>
+                    <p class="benefit-text">30-40% increase in yield</p>
+                </div>
+
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="benefit-title">Certified Quality</h3>
+                    <p class="benefit-text">International standards compliance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="product-section" id="features">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Advanced Features</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Cutting-Edge Technology for Modern Agriculture
+            </p>
+
+            <div class="product-grid">
+                <div class="premium-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="card-title">Scientific Formula</h3>
+                    <p class="card-description">
+                        Developed with advanced research and patented X-factor technology. 
+                        Contains humic acid, phenolic acid, citric acid, and amino acids.
+                    </p>
+                </div>
+
+                <div class="premium-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="card-title">Eco-Friendly</h3>
+                    <p class="card-description">
+                        Sustainable production methods with zero environmental impact. 
+                        Contributes to carbon reduction and soil health restoration.
+                    </p>
+                </div>
+
+                <div class="premium-card" data-aos="flip-left" data-aos-delay="400">
+                    <div class="card-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="card-title">Award-Winning</h3>
+                    <p class="card-description">
+                        Recognized by international agricultural organizations. 
+                        Trusted by thousands of farmers worldwide.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-card" data-aos="zoom-in">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-volume"></i>
+                </div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p style="font-size: 1.2rem; color: #666; margin: 20px 0;">
+                    Ready to revolutionize your farming?<br>
+                    Contact our expert team today!
+                </p>
+                
+                <div class="phone-number">
+                    089-939-9083
+                </div>
+                
+                <p style="color: #888; margin: 20px 0;">
+                    <i class="fas fa-clock"></i> Available Mon-Sun: 8:00 AM - 8:00 PM
+                </p>
+                
+                <a href="tel:0899399083" class="call-button">
+                    <i class="fas fa-phone-alt"></i>
+                    Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with proper credits -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i> <span class="logo-number">4</span>TREE
+            </div>
+            <p style="opacity: 0.8; margin: 10px 0;">Premium Agricultural Innovation by A4S</p>
+            <p style="opacity: 0.6;">© 2025 4TREE Farming. All rights reserved.</p>
+            
+            <!-- IMPORTANT: Legal Credits Section -->
+            <div class="footer-credits">
+                <p>
+                    This website template is based on 
+                    <a href="https://startbootstrap.com/theme/grayscale" target="_blank" rel="noopener">
+                        Start Bootstrap - Grayscale
+                    </a>
+                </p>
+                <p>
+                    Original template by Start Bootstrap LLC | 
+                    <a href="https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE" target="_blank" rel="noopener">
+                        MIT License
+                    </a>
+                </p>
+                <p>Modified and enhanced by 4TREE/A4S Team (2025)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
